@@ -4,5 +4,8 @@
     <string name="app_name">campus_know-all</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_school">SchoolActivity</string>
+    <string name="title_activity_login">Login/Register</string>
+    <string name="title_activity_register">Register</string>
 
 </resources>

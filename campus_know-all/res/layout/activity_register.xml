@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:stretchColumns="0,5"
+    tools:context="com.example.campus_know_all.RegisterActivity" >
+
+	<!-- 第1行 -->
+	<TableRow android:id="@+id/reg_tableRow1" 
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+		<TextView android:text="帐    号：" 
+			android:id="@+id/reg_textView1" 
+			android:layout_width="wrap_content"
+			android:textSize="24px" 
+			android:layout_height="wrap_content"
+			/>
+		<EditText android:id="@+id/reg_editText1" 
+			android:textSize="24px" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:minWidth="200px"/>
+	</TableRow>
+	<!-- 第2行 -->	
+	<TableRow android:id="@+id/reg_tableRow2" 
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+		<TextView android:text="密    码：" 
+			android:id="@+id/reg_textView2" 
+			android:textSize="24px" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"/>
+		<EditText android:layout_height="wrap_content" 
+			android:layout_width="wrap_content" 
+			android:textSize="24px" 
+			android:id="@+id/reg_editText2" 
+			android:inputType="textPassword"/>
+	</TableRow>
+	<!-- 第3行 -->	
+	<TableRow android:id="@+id/reg_tableRow3" 
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+		<TextView android:text="重复密码：" 
+			android:id="@+id/reg_textView3" 
+			android:textSize="24px" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"/>
+		<EditText android:layout_height="wrap_content" 
+			android:layout_width="wrap_content" 
+			android:textSize="24px" 
+			android:id="@+id/reg_editText3" 
+			android:inputType="textPassword"/>
+	</TableRow>
+	<!-- 第4行 -->
+	<TableRow android:id="@+id/reg_tableRow4" 
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+		<TextView android:text="昵    称：" 
+			android:id="@+id/reg_textView4" 
+			android:layout_width="wrap_content"
+			android:textSize="24px" 
+			android:layout_height="wrap_content"
+			/>
+		<EditText android:id="@+id/reg_editText4" 
+			android:textSize="24px" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:minWidth="200px"/>
+	</TableRow>	
+	<!-- 第5行 -->
+	<TableRow android:id="@+id/tableRow5" 
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+		<Button android:text="退出" 
+			android:id="@+id/reg_exit" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"/>
+		<Button android:text="注册" 
+			android:id="@+id/reg_register" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"/>
+	</TableRow>
+</TableLayout>
+
