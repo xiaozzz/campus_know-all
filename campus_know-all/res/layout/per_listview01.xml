@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">"
+    
+    
+    <!-- TODO：迷之BUG，这里改变顺序没法改变显示出来的顺序 -->
+        <TextView
+            android:id="@+id/per_nickname" 
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>  
+                                       
+        <TextView
+            android:id="@+id/per_content" 
+            android:textAppearance="?android:attr/textAppearanceLarge"            
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>        
+
+      
+        
+</LinearLayout>

@@ -27,7 +27,8 @@ String username;
 		String time = "2015年1月1日~2015年2月1日";
 		String place = "东区大转盘";
 		String type = "人文";
-		String event = "第一节校文化节吹B大会正式开幕,....\n第一节校文化节吹B大会正式开幕,....\n第一节校文化节吹B大会正式开幕,....";
+		String event = "第一节校文化节吹B大会正式开幕,吹B大王WFZ参与....第一节校文化节吹B大会正式开幕,吹B大王WFZ参与....\n"
+				+ "第一节校文化节吹B大会正式开幕,吹B大王WFZ参与....";
 		tv = (TextView)findViewById(R.id.editText1);
 		tv.setText(time);
 		tv = (TextView)findViewById(R.id.editText2);

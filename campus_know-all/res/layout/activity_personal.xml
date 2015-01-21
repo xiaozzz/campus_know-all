@@ -6,11 +6,125 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.campus_know_all.PersonalActivity" >
+    tools:context="com.example.campus_know_all.PersonalActivity" 
+    android:orientation="vertical">
+    
+	<TableLayout android:id="@+id/tableLayout2"
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		android:stretchColumns="0,5"	
+		>
+		<!-- 第一行 -->
+		<TableRow android:id="@+id/per_tableRow1" 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+			<TextView android:text="时间：" 
+				android:id="@+id/per_textView1" 
+				android:layout_width="wrap_content"
+				android:textSize="24px" 
+				android:layout_height="wrap_content"
+				/>
+			<TextView android:id="@+id/per_editText1" 
+				android:textSize="24px" 
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" 
+				android:minWidth="200px"/>
+		</TableRow>
+		<!-- 第二行 -->	
+		<TableRow android:id="@+id/per_tableRow2" 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+			<TextView android:text="地点：" 
+				android:id="@+id/per_textView2" 
+				android:textSize="24px" 
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"/>
+			<TextView android:layout_height="wrap_content" 
+				android:layout_width="wrap_content" 
+				android:textSize="24px" 
+				android:id="@+id/per_editText2" />
+		</TableRow>
+		<!-- 第3行 -->
+		<TableRow android:id="@+id/per_tableRow3" 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+			<TextView android:text="类别：" 
+				android:id="@+id/per_textView3" 
+				android:textSize="24px" 
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"/>
+			<TextView android:layout_height="wrap_content" 
+				android:layout_width="wrap_content" 
+				android:textSize="24px" 
+				android:id="@+id/per_editText3" />
+		</TableRow>
+		<!-- 第4行 -->
+		<TableRow android:id="@+id/per_tableRow4" 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+			<TextView android:text="发布人：" 
+				android:id="@+id/per_textView4" 
+				android:textSize="24px" 
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"/>
+			<TextView android:layout_height="wrap_content" 
+				android:layout_width="wrap_content" 
+				android:textSize="24px" 
+				android:id="@+id/per_editText4" />
+		</TableRow>
+		<!-- 第5行 -->
+		<TableRow android:id="@+id/per_tableRow5" 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+			<TextView android:text="事件：" 
+				android:id="@+id/per_textView5" 
+				android:layout_width="wrap_content"
+				android:textSize="24px" 
+				android:layout_height="wrap_content"
+				/>
+			<TextView android:id="@+id/per_editText5" 
+				android:textSize="24px" 
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" 
+				android:minWidth="200px"/>
+		</TableRow>
+	</TableLayout>
+	
+	
+    <ListView
+        android:id="@+id/per_listview01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">            
+    </ListView>        
 
     <TextView
-        android:layout_width="wrap_content"
+        android:text="\n\n我愿接受委托：\n"
+        android:textAppearance="?android:attr/textAppearanceLarge" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">            
+    </TextView>         
+    
+    <EditText 
+        android:id="@+id/per_input"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="TODO" />
+        android:orientation="horizontal">
+       <Button 
+        android:id="@+id/per_cancel"
+        android:text="返回"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>         
+      <Button 
+        android:id="@+id/per_submit"
+        android:text="提交"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>      
+        
+    </LinearLayout>
 
+    
+    
 </LinearLayout>

@@ -8,7 +8,8 @@ public final class Data {
     public static String[][] USER = {
     	{"aaa","aaa","zxh"},
     	{"bbb","bbb","wfz"},
-    	{"ccc","ccc","lmc"}
+    	{"ccc","ccc","lmc"},
+    	{"","","test"}  	
     };
     /*
     public static void append(String[] str){
