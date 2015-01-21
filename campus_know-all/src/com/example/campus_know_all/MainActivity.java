@@ -23,6 +23,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 private TabHost tabHost;		//声明TabHost组件的对象
 private ListView lv;
+private ListView lv2;
 private String username;
 private String nickname;
     @Override
@@ -70,7 +71,33 @@ private String nickname;
 			}
 			
 		});        
-        
+ 
+        lv2 = (ListView) findViewById(R.id.listview02);
+		SimpleAdapter adapter2 = new SimpleAdapter(this,getData2(),R.layout.listview02,
+                new String[]{"info","img"},
+                new int[]{R.id.info01,R.id.img01});
+
+		lv2.setAdapter(adapter2);	
+		
+		lv2.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MainActivity.this,PersonalActivity.class);
+				Bundle bundle = new Bundle();
+
+				int tmp = position; //tmp = pos2id(position);转化为消息的primary key
+				bundle.putInt("pos", tmp);
+				bundle.putString("username", username);
+				intent.putExtras(bundle);
+				//给activity的信息有当前用户名，新闻ID
+				startActivity(intent);
+			}
+			
+		});     		
+		
     }	
 
 	private List<Map<String, Object>> getData() {
@@ -93,7 +120,28 @@ private String nickname;
          
         return list;
     }    
-    
+ 
+	private List<Map<String, Object>> getData2() {
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+ 
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("info", "寻物启事：丢失海南狗一只");
+        map.put("img", R.drawable.zhaoyixishi);
+        list.add(map);
+ 
+        map = new HashMap<String, Object>();
+        map.put("info", "求高人做本软件界面设计！");
+        map.put("img", R.drawable.timujieda);
+        list.add(map);
+ 
+        map = new HashMap<String, Object>();
+        map.put("info", "找人陪我打dota");
+        map.put("img", R.drawable.zhaorenhezuo);
+        list.add(map);
+         
+        return list;
+    }  	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

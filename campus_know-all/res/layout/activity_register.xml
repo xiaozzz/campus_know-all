@@ -15,6 +15,7 @@
 	<TableRow android:id="@+id/reg_tableRow1" 
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content">
+		<TextView />
 		<TextView android:text="帐    号：" 
 			android:id="@+id/reg_textView1" 
 			android:layout_width="wrap_content"
@@ -26,11 +27,13 @@
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content" 
 			android:minWidth="200px"/>
+		<TextView />
 	</TableRow>
 	<!-- 第2行 -->	
 	<TableRow android:id="@+id/reg_tableRow2" 
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content">
+		<TextView />
 		<TextView android:text="密    码：" 
 			android:id="@+id/reg_textView2" 
 			android:textSize="24px" 
@@ -41,11 +44,13 @@
 			android:textSize="24px" 
 			android:id="@+id/reg_editText2" 
 			android:inputType="textPassword"/>
+		<TextView />
 	</TableRow>
 	<!-- 第3行 -->	
 	<TableRow android:id="@+id/reg_tableRow3" 
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content">
+		<TextView />
 		<TextView android:text="重复密码：" 
 			android:id="@+id/reg_textView3" 
 			android:textSize="24px" 
@@ -56,11 +61,13 @@
 			android:textSize="24px" 
 			android:id="@+id/reg_editText3" 
 			android:inputType="textPassword"/>
+		<TextView />
 	</TableRow>
 	<!-- 第4行 -->
 	<TableRow android:id="@+id/reg_tableRow4" 
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content">
+		<TextView />
 		<TextView android:text="昵    称：" 
 			android:id="@+id/reg_textView4" 
 			android:layout_width="wrap_content"
@@ -72,11 +79,13 @@
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content" 
 			android:minWidth="200px"/>
+		<TextView />
 	</TableRow>	
 	<!-- 第5行 -->
 	<TableRow android:id="@+id/tableRow5" 
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content">
+		<TextView />
 		<Button android:text="退出" 
 			android:id="@+id/reg_exit" 
 			android:layout_width="wrap_content" 
@@ -85,6 +94,7 @@
 			android:id="@+id/reg_register" 
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content"/>
+		<TextView />
 	</TableRow>
 </TableLayout>
 
