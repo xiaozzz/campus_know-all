@@ -1,5 +1,11 @@
 package com.example.campus_know_all;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,12 +14,15 @@ import java.util.Map;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TabHost;
@@ -26,6 +35,7 @@ private ListView lv;
 private ListView lv2;
 private String username;
 private String nickname;
+private List<Map<String, Object>> list1 = new ArrayList<Map<String, Object>>();			//school_act_list
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +57,12 @@ private String nickname;
         		.setIndicator("个人委托")
         		.setContent(R.id.LinearLayout02));  	//添加第二个标签页       
         lv = (ListView) findViewById(R.id.listview01);
-		SimpleAdapter adapter = new SimpleAdapter(this,getData(),R.layout.listview01,
-                new String[]{"info","img"},
-                new int[]{R.id.info01,R.id.img01});
+		SimpleAdapter adapter = null;
+
+		adapter = new SimpleAdapter(this,getData(),R.layout.listview01,
+			        new String[]{"info","img"},
+			        new int[]{R.id.info01,R.id.img01});
+
 
 		lv.setAdapter(adapter);	
 		
@@ -63,6 +76,7 @@ private String nickname;
 				Bundle bundle = new Bundle();
 
 				int tmp = position; //tmp = pos2id(position);转化为消息的primary key
+
 				bundle.putInt("pos", tmp);
 				bundle.putString("username", username);
 				intent.putExtras(bundle);
@@ -75,7 +89,7 @@ private String nickname;
         lv2 = (ListView) findViewById(R.id.listview02);
 		SimpleAdapter adapter2 = new SimpleAdapter(this,getData2(),R.layout.listview02,
                 new String[]{"info","img"},
-                new int[]{R.id.info01,R.id.img01});
+                new int[]{R.id.info02,R.id.img02});
 
 		lv2.setAdapter(adapter2);	
 		
@@ -101,26 +115,99 @@ private String nickname;
     }	
 
 	private List<Map<String, Object>> getData() {
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
- 
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("info", "王师傅当场证明P!=NP");
-        map.put("img", R.drawable.li);
-        list.add(map);
- 
-        map = new HashMap<String, Object>();
-        map.put("info", "校篮球打铁大赛");
-        map.put("img", R.drawable.ti);
-        list.add(map);
- 
-        map = new HashMap<String, Object>();
-        map.put("info", "第一节校文化节吹B大会");
-        map.put("img", R.drawable.wen);
-        list.add(map);
-         
-        return list;
+        //List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        
+        Thread t1 = new Thread(networkTask1);
+        list1.clear();
+        t1.start();
+        //Log.v("list_size1",list1.size()+"");
+        try {
+			t1.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        //Log.v("list_size2",list1.size()+"");
+        
+        return list1;
     }    
- 
+ 		
+	Runnable networkTask1 = new Runnable() {  
+		  
+	    @Override  
+	    public void run() {  
+	        // TODO  
+	        // 在这里进行 http request.网络请求相关操作  
+		String target = Data.SERVER + "?type=school_act_list";
+		
+			String result = "";
+			
+			try {
+				URL url = new URL(target);
+				HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+				InputStreamReader in = new InputStreamReader(urlConnection.getInputStream());
+				BufferedReader buffer = new BufferedReader(in);
+				String inputLine = null;
+				Map<String, Object> map;
+				while ((inputLine = buffer.readLine())!=null)
+				{
+					/*
+					Log.v("inputline = " , inputLine);
+					if ((inputLine = buffer.readLine())==null)
+						break;
+					Log.v("inputline = " , inputLine);
+					if ((inputLine = buffer.readLine())==null)
+						break;
+					Log.v("inputline = " , inputLine);
+					*/
+			        map = new HashMap<String, Object>();
+			        map.put("id", inputLine);	        
+			        
+					if ((inputLine = buffer.readLine())==null)
+						break;
+			        if (inputLine.equals("理工"))
+			        	map.put("img", R.drawable.li);
+			        else if (inputLine.equals("文学"))
+				        	map.put("img", R.drawable.wen);
+			        else if (inputLine.equals("体育"))
+			        	map.put("img", R.drawable.ti);
+			        else map.put("img", R.drawable.qi);
+			        
+					if ((inputLine = buffer.readLine())==null)
+						break;
+			        map.put("info", inputLine);
+			        
+			        list1.add(map);					
+				
+				}
+			
+				in.close();
+				urlConnection.disconnect();
+			
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				
+			/*
+	        Message msg = new Message();  
+	        Bundle data = new Bundle();  
+	        data.putString("result", result); 
+	        data.putString("username", username);
+	        data.putString("nickname", nickname);
+	        
+	        msg.setData(data);  
+	        handler1.sendMessage(msg);  
+	        */
+	    }  
+	};	
+	
+	
+	
 	private List<Map<String, Object>> getData2() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
  

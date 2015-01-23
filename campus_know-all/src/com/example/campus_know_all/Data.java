@@ -1,16 +1,19 @@
 package com.example.campus_know_all;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public final class Data {
-	//用户信息
-	
-    public static String[][] USER = {
-    	{"aaa","aaa","zxh"},
-    	{"bbb","bbb","wfz"},
-    	{"ccc","ccc","lmc"},
-    	{"","","test"}  	
-    };
+import android.util.Base64;
 
-    public static final String SERVER = "http://192.168.0.6/php/";
+public final class Data {
+	
+    public static final String SERVER = "http://192.168.0.4/php/";
+    
+    
+    public static final String base64(String content) throws UnsupportedEncodingException{
+    	content = Base64.encodeToString(content.getBytes("utf-8"),Base64.DEFAULT);
+    	content = URLEncoder.encode(content);
+    	return content;
+    }
 }

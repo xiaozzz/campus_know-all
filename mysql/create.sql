@@ -1,4 +1,4 @@
-CREATE DATABASE if not exists campus DEFAULT CHARACTER SET utf8;
+CREATE DATABASE if not exists campus DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE if not exists user_info 
 (
@@ -7,6 +7,26 @@ pwd		varchar(255),
 nickname	varchar(255),
 primary	key	(id)
 ) DEFAULT CHARSET=utf8;
+
+CREATE TABLE if not exists school_act_type
+(
+type_id		int(2) NOT NULL auto_increment,
+content		varchar(255),
+primary key	(type_id)
+)DEFAULT CHARSET=utf8;
+
+CREATE TABLE if not exists school_act
+(
+act_id		int(6) NOT NULL auto_increment,
+type		int(2),
+description	varchar(255),
+time		varchar(255),
+place		varchar(255),
+detail		varchar(255),
+primary key	(act_id),
+foreign key (type) references school_act_type(type_id)
+		on delete set null
+)DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 CREATE TABLE if not exists entrust_type
 (
