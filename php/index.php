@@ -50,11 +50,82 @@ case "school_act_list" :
 		echo $row[2]."\n";	
 	}
 	break;
+case "school_act_detail" :
+	$str1 = $_GET["id"];
+	$res = mysql_query("SELECT * FROM school_act WHERE act_id = '$str1';");
+	$row = mysql_fetch_row($res);
+	//print_r($row);
+	$type = mysql_query	("SELECT content FROM school_act_type WHERE type_id = $row[1];");	
+	//print_r($type);
+	$tmp = mysql_fetch_row($type);
+	echo $tmp[0]."\n";	
+	//echo $row[1]."\n";
+	echo $row[3]."\n";
+	echo $row[4]."\n";
+	echo $row[5]."\n";
+	
+	break;
+case "entrust_list" :
+	$str1 = $_GET["entrust_type"];
+	$str2 =  $_GET["username"];
+	if ($str1 == '0')
+		$res = mysql_query("SELECT * FROM entrust WHERE from_id != '$str2';");
+	else
+		$res = mysql_query("SELECT * FROM entrust WHERE from_id = '$str2';");
+	while ($row = mysql_fetch_row($res))
+	{
+		//print_r($row);
+		echo $row[0]."\n";
+		//echo $row[1]."\n";
+		$type = mysql_query	("SELECT content FROM entrust_type WHERE type_id = $row[5];");	
+		//print_r($type);
+		$tmp = mysql_fetch_row($type);
+		echo $tmp[0]."\n";
+		echo $row[1]."\n";	
+	}
+	break;
+case "entrust_detail" :
+	$str1 =  $_GET["id"];
+	$res = mysql_query("SELECT * FROM entrust WHERE en_id = '$str1';");
+	$row = mysql_fetch_row($res);
+	//print_r($row);
+		
+	echo $row[3]."\n";
+	echo $row[4]."\n";	
+	$type = mysql_query	("SELECT content FROM entrust_type WHERE type_id = $row[5];");	
+	$tmp = mysql_fetch_row($type);	
+	echo $tmp[0]."\n";	
+	$nickname = mysql_query	("SELECT nickname FROM user_info WHERE id = '$row[2]';");	
+	$tmp = mysql_fetch_row($nickname);
+	echo $tmp[0]."\n";		
+	echo $row[6]."\n";
+	break;
+case "get_reply" :
+	$str1 =  $_GET["id"];
+	$res = mysql_query("SELECT * FROM reply WHERE entrust_id = $str1;");
+	while ($row = mysql_fetch_row($res))
+	{
 
+		$type = mysql_query	("SELECT nickname FROM user_info WHERE id = '$row[2]';");	
+		$tmp = mysql_fetch_row($type);
+		echo $tmp[0]."\n";
+		echo $row[3]."\n";	
+	}
+	break;
+case "send_reply" :
+	$str1 =  $_GET["en_id"];
+	$str2 =  $_GET["from_id"];
+	$str3 =  $_GET["content"];	
+	$res = mysql_query("INSERT INTO reply(entrust_id,from_id,content) VALUES($str1,'$str2','$str3');");
+	if ($res)
+		echo "success";
+	else
+		echo "fail";
+	break;
 default :
 	echo "error(no such type)";	
 }
-
+mysql_close($conn);
 ?>
 
 

@@ -10,7 +10,7 @@
 	<TableRow android:id="@+id/tableRow1" 
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content">
-		<Button android:text="查看全部委托"
+		<Button android:text="查看他人委托"
 		    android:layout_weight="1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"

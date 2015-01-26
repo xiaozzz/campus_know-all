@@ -56,11 +56,13 @@ public class LoginActivity extends Activity {
 	        String val = data.getString("result");  
 	        String username = data.getString("username");
 	        String nickname = data.getString("nickname");
+	        
+	        
 	        if (val.equals("success")){
 	        	Toast.makeText(LoginActivity.this, "欢迎回来："+nickname, Toast.LENGTH_SHORT).show();
 				Intent intent=new Intent(LoginActivity.this,MainActivity.class);	//创建要显示Activity对应的Intent对象
 				Bundle bundle=new Bundle();		//创建一个Bundle的对象bundle
-				bundle.putString("id", username);
+				bundle.putString("username", username);
 				bundle.putString("nickname", nickname);	//保存昵称
 				intent.putExtras(bundle);	//将数据包添加到intent对象中
 				startActivity(intent);		//开启一个新的Activity
@@ -113,8 +115,8 @@ public class LoginActivity extends Activity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-				
-
+			
+			//Log.v("result",result);
 			
 	        Message msg = new Message();  
 	        Bundle data = new Bundle();  

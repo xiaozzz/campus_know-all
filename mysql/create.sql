@@ -39,6 +39,7 @@ primary key	(type_id)
 CREATE TABLE if not exists entrust
 (
 en_id		int(6) NOT NULL auto_increment,
+description	varchar(255),
 from_id		varchar(255),
 time		varchar(255),
 place		varchar(255),
@@ -62,5 +63,7 @@ content		varchar(255),
 
 primary key	(re_id),
 foreign key (from_id) references user_info(id)
+		on delete set null,
+foreign key (entrust_id) references entrust(en_id)
 		on delete set null
 )DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
