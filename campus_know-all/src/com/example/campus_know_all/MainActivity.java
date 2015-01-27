@@ -127,11 +127,22 @@ private Vector vi2 = new Vector(100);
 				}
 				else
 				{
-					//TODO
+					Intent intent = new Intent(MainActivity.this,PersonalSelfActivity.class);
+					Bundle bundle = new Bundle();
+	
+					String tmp = vi2.get(position).toString();
+					
+					bundle.putString("id", tmp);
+					bundle.putString("username", username);
+					intent.putExtras(bundle);
+					//给activity的信息有当前用户名，新闻ID
+					startActivity(intent);
 				}
 			}
 			
 		});     		
+		
+		//--------------------------三个按钮点击事件-----------------------
 		
 		Button bt = (Button)findViewById(R.id.chakan_1);
 		bt.setOnClickListener(new OnClickListener(){
@@ -155,6 +166,20 @@ private Vector vi2 = new Vector(100);
 				set_data2();
 			}
 		});		
+		bt = (Button)findViewById(R.id.chakan_3);
+		bt.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MainActivity.this,PersonalSendActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putString("username", username);
+				intent.putExtras(bundle);
+				//给activity的信息有当前用户名，新闻ID
+				startActivity(intent);
+			}
+		});	
     }	
 
 	private List<Map<String, Object>> getData() {

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name = "ctype">
+        <item>朝遗夕拾</item>
+        <item>题目解答</item>
+        <item>找人合作</item>
+        <item>其他委托</item>
+    </string-array>
+</resources>

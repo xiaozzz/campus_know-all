@@ -122,8 +122,22 @@ case "send_reply" :
 	else
 		echo "fail";
 	break;
+case "send_entrust" :
+	$str0 =  $_GET["description"];
+	$str1 =  $_GET["username"];
+	$str2 =  $_GET["time"];
+	$str3 =  $_GET["place"];
+	$str4 =  $_GET["e_type"];
+	$str5 =  $_GET["event"];	
+	$res = mysql_query("INSERT INTO entrust(description,from_id,time,place,type,event) 
+	VALUES('$str0','$str1','$str2','$str3',$str4,'$str5');");
+	if ($res)
+		echo "success";
+	else
+		echo "fail";
+	break;
 default :
-	echo "error(no such type)";	
+	echo "error(#no such type)";	
 }
 mysql_close($conn);
 ?>

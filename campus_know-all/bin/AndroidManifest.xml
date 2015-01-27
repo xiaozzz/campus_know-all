@@ -9,8 +9,8 @@
         android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.INTERNET" />
-    
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -40,6 +40,14 @@
         <activity
             android:name=".PersonalActivity"
             android:label="@string/title_activity_personal" >
+        </activity>
+        <activity
+            android:name=".PersonalSelfActivity"
+            android:label="@string/title_activity_personal_self" >
+        </activity>
+        <activity
+            android:name=".PersonalSendActivity"
+            android:label="@string/title_activity_personal_send" >
         </activity>
     </application>
 
