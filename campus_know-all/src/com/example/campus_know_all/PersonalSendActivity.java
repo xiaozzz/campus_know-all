@@ -8,7 +8,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Calendar;
 import java.util.Map;
+
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,6 +21,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -26,6 +30,8 @@ import android.widget.Toast;
 public class PersonalSendActivity extends Activity {
 private String username;
 private String result;
+private String date;
+final int CODE = 0x717;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,9 +40,22 @@ private String result;
 		Bundle bundle = intent.getExtras();
 		username = bundle.getString("username");	
 		
+		//----------------日期拾取器------------------------
+		Button bt = (Button) findViewById(R.id.time_choose);
+		bt.setOnClickListener(new OnClickListener(){
 
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(PersonalSendActivity.this,TimeActivity.class);
+				startActivityForResult(intent,CODE);
+			}
+			
+		});			
 		
-		Button bt = (Button) findViewById(R.id.send_cancel);
+		//----------------按钮------------------------
+		
+		bt = (Button) findViewById(R.id.send_cancel);
 		bt.setOnClickListener(new OnClickListener(){
 
 			@Override
@@ -77,6 +96,19 @@ private String result;
 		});		
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(requestCode==CODE && resultCode==CODE){
+			Log.v("here","here");
+			Bundle bundle = data.getExtras();
+			Log.v("here","here");
+			date = bundle.getString("date");
+			Log.v("date",date);
+			Button bt = (Button) findViewById(R.id.time_choose);
+			bt.setText(date);
+		}
+	}	
+	
 	Runnable networkTask1 = new Runnable() {  
 		  
 	    @Override  
@@ -89,8 +121,10 @@ private String result;
 	    	StringBuilder sb = new StringBuilder();
 	    	try {
 		    	sb.append("&time=");
-		    	et = (EditText)findViewById(R.id.send_editText1);
-				sb.append(URLEncoder.encode(et.getText().toString().trim(), "UTF-8"));
+		    	sb.append(URLEncoder.encode(date, "UTF-8"));    	
+		    	//et = (EditText)findViewById(R.id.send_editText1);
+				//sb.append(URLEncoder.encode(et.getText().toString().trim(), "UTF-8"));
+		    	
 		    	sb.append("&place=");
 		    	et = (EditText)findViewById(R.id.send_editText2);
 				sb.append(URLEncoder.encode(et.getText().toString().trim(), "UTF-8"));		

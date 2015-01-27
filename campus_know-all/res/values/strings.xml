@@ -10,5 +10,6 @@
     <string name="title_activity_personal">个人委托-详细信息</string>
     <string name="title_activity_personal_self">我的委托</string>
     <string name="title_activity_personal_send">发布新委托</string>
+    <string name="title_activity_time">选择委托时间</string>
 
 </resources>
